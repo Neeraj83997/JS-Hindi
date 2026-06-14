@@ -14,3 +14,5 @@ accountState="Punjab"
 
 console.log("Neeraj")
 console.table([accountId,emailId,accountPwd,accountState,accountCity])
+
+// link for study: https://developer.mozilla.org/en-US/docs/Web/JavaScript,  https://tc39.es/ecma262/multipage/abstract-operations.html , https:// tc39.es/ecma262/multipage/abstract=operations.html#sec-type-conversion
