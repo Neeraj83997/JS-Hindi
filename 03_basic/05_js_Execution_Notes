@@ -1,0 +1,64 @@
+//======Java Script Execution Context=========
+ JS runs the program in two phases
+ 1: Global Execution Context -> it stored in variable named 'this'. but in brouser the value of 'this' is window object.
+    it execute under the thread. JS is a single threaded, inside that all this is process.
+	
+ 2: Function Execution Context ->	
+ 
+ 3: Eval Execution Context (in mongoos) -> property of Global object
+	
+Example:
+    let val1 = 10
+    let val2 = 5
+	function addNumber(num1, num2){
+	  let total = num1 + num2
+	  return total
+	}
+	let result1=addNumber(val1,val2)
+	let result2=addNumber(10,2)
+	
+JS runs the program in two phases
+	
+	a:  Global Execution -> this
+	
+	b: Memory Creation Phase / Creation Phase - In this phase the memory location for variables is allocated. 
+	   val1 -> undefined
+	   val2 -> undefined
+	   addNumber -> definition -> (num1, num2){
+	                          let total = num1 + num2
+	                          return total
+	   result1 -> undefined
+	   result2 -> undefined
+	
+	c: Execution Phase - line no 11:  val1 = 10
+	                     line no 12: val2 = 5
+						 line no 17: addNumber = create own new execution context, it will create 'new variable environment' and 'execution phase'. 
+						                         In each and every function execution it will create. Than it will go again in memory phase and execution phases for 'addNumber'.
+									memory phase = val1 -> undefined
+									               val2 -> undefined
+												   total -> undefined
+									execution phase = num1 -> 10
+                                                      num2 -> 5
+													  total -> 15  // this total's value return in the Global Execution part
+													  
+												After complete its execution , new execution context will be deleted.
+												
+						 line no 17: result1 -> 15		
+                         line no 18: addNumber = create own new execution context again, it will create 'new variable environment' and 'execution phase' again. 
+						                         In each and every function execution it will create. Than it will go again in memory phase and execution phases for 'addNumber'.
+									memory phase = val1 -> undefined
+									               val2 -> undefined
+												   total -> undefined
+									execution phase = num1 -> 10
+                                                      num2 -> 2
+													  total -> 12  // this total's value return in the Global Execution part
+													  
+												After complete its execution , new execution context will be deleted.
+												
+						 line no 18: result2 -> 12
+
+===========================================
+CALL STACK -> lifo (last in first out)-> last in is going to first out						 
+						 									
+	
+	
