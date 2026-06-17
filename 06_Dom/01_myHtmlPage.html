@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">  <!-- this page is start from this line -->
+<head>
+    <meta charset="UTF-8">
+    
+    <title>DOM Learning</title>
+    <style>
+      .bg-black{
+         background-color: #212122;
+         color: #fff;
+      }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+       <h1 id="title" class="heading">DOM Learning on youtube <span style="display: none;">channel chai</span></h1>
+       <h2> Fee ejdhjwen dewejf</h2>
+       <h3> Fee ejdhjwen dewejf</h3>
+       <h4> Fee ejdhjwen dewejf</h4>
+       <p>My Name is Neeraj. I am 6 year old.</p>
+       <input type="password" name="" id="">
+       <ul> <!--unordered list-->
+         <li class="list-item">one</li> <!-- list item -->
+         <li class="list-item">two</li>
+         <li class="list-item">three</li>
+         <li class="list-item">four</li>
+       </ul> 
+    </div>
+</body>
+</html>
+
+<!-- Document Object Modal(DOM)-> In this web page , we have some objects like html,head , body -->
+<!--
+  WINDOW -> DOCUMENT -> HTML 
+  HTML -> HEAD , BODY [html can consist of two parts. a) HEAD , b) BODY]
+      HEAD -> TITLE , META [head can consist of two parts. a) TITLE , B) META]
+         TITLE -> Title has text node like 'DOM Learning'
+         META -> Meta has attribute like charset="UTF-8"
+      BODY-> DIV
+         DIV -> h1 , p [Div can have h1 , p ]
+            h1 -> h1 has text node(DOM Learning on youtube) and attribute(class="heading")    
+            p ->paragraph has text node like My Name is Neeraj. I am 6 year old.
+
+-->
+
+<!-- 
+title
+<h1 id=​"title" class=​"heading" style=​"background-color:​ green;​ padding:​ 15px;​ border-radius:​ 15px;​">​DOM Learning on youtube​</h1>​
+title.style.backgroundColor='green'
+'green'
+title.style.padding='15px'
+'15px'
+title.style.borderRadius='15px'
+'15px'
+
+
+title
+<h1 id=​"title" class=​"test" style=​"background-color:​ green;​ padding:​ 15px;​ border-radius:​ 15px;​">​DOM Learning on youtube​</h1>​
+document.getElementById('title').getAttribute('id')
+'title'
+document.getElementById('title').getAttribute('class')
+'heading'
+document.getElementById('title').getAttribute('style')
+'background-color: green; padding: 15px; border-radius: 15px;'
+document.getElementById('title').setAttribute('class','test')
+undefined
+document.getElementById('title').getAttribute('class')
+'test'
+
+
+const title = document.getElementById('title')
+
+=================1====
+title
+<h1 id=​"title" class=​"test" style=​"background-color:​ green;​ padding:​ 15px;​ border-radius:​ 15px;​">​DOM Learning on youtube​</h1>​
+title.textContent
+'DOM Learning on youtube'
+title.innerHTML
+'DOM Learning on youtube'
+title.innerText
+'DOM Learning on youtube'
+
+//here title.textContent, title.innerHTML and title.innerText values are same.
+if i change in this line(<h1 id="title" class="heading">DOM Learning on youtube <span>channel chai</span></h1> ), and run
+title.textContent and title.innerText command then the changes will reflect, but when i run
+title.innerHTML,it will give whole html code like 'DOM Learning on youtube <span>channel chai</span>' 
+
+if i chnage this line again ( <h1 id="title" class="heading">DOM Learning on youtube <span style="display: none;">channel chai</span></h1> ) by adding
+style="display: none;" , and run , i will get:
+ title.textContent
+'DOM Learning on youtube channel chai'
+title.innerText
+'DOM Learning on youtube'
+title.innerHTML
+'DOM Learning on youtube <span style="display: none;">channel chai</span>'
+  
+===============1/==========
+
+document.getElementsByClassName('heading')
+HTMLCollection [h1#title.heading, title: h1#title.heading]
+
+document.querySelector('h1')  // it will give only first h1 // by default it will select first item
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+document.querySelector('h2')  // it will give only second h2
+<h2>​ Fee ejdhjwen dewejf​</h2>​
+
+document.querySelector('#title')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+document.querySelector('.heading')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+
+document.querySelector('input[type="password"]')
+<input type=​"password" name id>​
+
+document.querySelector('ul')
+<ul><li>​…​</li>​::marker​"one"</li>​<li>​…​</li>​<li>​…​</li>​</ul>​
+
+const myul=document.querySelector('ul')
+
+myul.querySelector('li') // select first item if i dont mention
+<li>​::marker​"one"</li>​
+
+const turnGreen=myul.querySelector('li')
+undefined
+turnGreen.style.backgroundColor="green"
+'green'
+turnGreen.style.padding="10px"
+'10px'
+
+turnGreen.innerText
+'one'
+turnGreen.innerText="five"
+'five'
+
+document.querySelectorAll('li')
+NodeList(3) [li, li, li] // this is not array, it is a node list different from array.
+
+const tempLiList=document.querySelectorAll('li')
+tempLiList[1].style.color='green' // if we use querySelectorAll ,we have to provide index
+
+tempLiList.forEach(function (li) {
+    li.style.backgroundColor='green'
+})
+
+document.getElementsByClassName('list-item')
+HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: HTMLCollection
+const tempClassList=document.getElementsByClassName('list-item') // it returns HTMLCollection , which dont have foreach loop method
+
+Array.from(tempClassList) // this line converted into array
+(4) [li.list-item, li.list-item, li.list-item, li.list-item]0: li.list-item1: li.list-item2: li.list-item3: li.list-itemlength: 4[[Prototype]]: Array(0)at: ƒ at()concat: ƒ concat()constructor: ƒ Array()copyWithin: ƒ copyWithin()entries: ƒ entries()every: ƒ every()fill: ƒ fill()filter: ƒ filter()find: ƒ find()findIndex: ƒ findIndex()findLast: ƒ findLast()findLastIndex: ƒ findLastIndex()flat: ƒ flat()flatMap: ƒ flatMap()forEach: ƒ forEach()includes: ƒ includes()indexOf: ƒ indexOf()join: ƒ join()keys: ƒ keys()lastIndexOf: ƒ lastIndexOf()length: 0map: ƒ map()pop: ƒ pop()push: ƒ push()reduce: ƒ reduce()reduceRight: ƒ reduceRight()reverse: ƒ reverse()shift: ƒ shift()slice: ƒ slice()some: ƒ some()sort: ƒ sort()splice: ƒ splice()toLocaleString: ƒ toLocaleString()toReversed: ƒ toReversed()toSorted: ƒ toSorted()toSpliced: ƒ toSpliced()toString: ƒ toString()unshift: ƒ unshift()values: ƒ values()with: ƒ with()Symbol(Symbol.iterator): ƒ values()Symbol(Symbol.unscopables): {at: true, copyWithin: true, entries: true, fill: true, find: true, …}[[Prototype]]: Object
+const myConvertedArray=Array.from(tempClassList)
+
+myConvertedArray.forEach((li)=>li.style.color='orange')
+
+
+-->
+
+
