@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DOM | Document Object Model </title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+          <div class="day">Monday</div>
+          <div class="day">Tuesday</div>
+          <div class="day">Wednesday</div>
+          <div class="day">Thrusday</div>
+    </div>
+</body>
+<script>
+       const weekDays=document.querySelector('.parent')
+    //    console.log(weekDays); //all parent element
+    //     console.log(weekDays.children); // all child div in HTMLCollection
+    //     console.log(weekDays.children[1].innerHTML); // Tuesday
+
+       for (let i = 0; i < weekDays.children.length; i++) {
+           // console.log(weekDays.children[i]); // Mon, Tue, Wed, Thr
+       }
+    //    weekDays.children[1].style.color='orange' // Tuesday in orange
+    //     console.log(weekDays.firstElementChild); // Monday
+    //     console.log(weekDays.lastElementChild); // Thrusday
+       
+        const dayOne=document.querySelector('.day') //it gives first day 
+    //    console.log(dayOne); // Monday
+    //    console.log(dayOne.nextElementSibling); // Tuesday
+    //    console.log(dayOne.parentElement); // all parent element
+       
+       console.log("Nodes: ",weekDays.childNodes); // text means break(change line) // NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
+    //    <div class="parent"> 1=break
+    //       <div class="day">Monday</div> 2=Monday , 3=break
+    //       <div class="day">Tuesday</div> 4=Tuesday      , 5=break
+    //       <div class="day">Wednesday</div> 6= Wednesday    ,7=break
+    //       <div class="day">Thrusday</div> 8= Thrusday     ,9=break
+    //    </div>
+       
+       
+</script>
+</html>
