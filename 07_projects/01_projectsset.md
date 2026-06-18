@@ -5,7 +5,7 @@
 
 # Solution code
 
-## project 1
+## project 1 solution
 
 ```javascript
 console.log("Neeraj")
@@ -38,8 +38,28 @@ butn.addEventListener('click',function(e){ //e is event object details
 }) 
 })
 
+```
 
+## project 2 solution
+```javascript
+const myForm = document.querySelector('form');
+//const myHeight=parseInt(document.querySelector('#hight').value) // this usecase will give you empty, because actually form takes value during submit
 
+//Whenever form submits,it submits either post type or get type.whenever it submits its value goes to the server through url by default. For preventing this we provide preventDefault() method.
+myForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const myHeight = parseInt(document.querySelector('#height').value);
+  const myWeight = parseInt(document.querySelector('#weight').value);
+  const result = document.querySelector('#results');
 
+  if (myHeight < 0 || isNaN(myHeight) || myHeight === '') {
+    result.innerHTML = `Please give valid height ${myHeight}`;
+  }else if (myWeight < 0 || isNaN(myWeight) || myWeight === '') {
+    result.innerHTML = `Please give valid weight ${myWeight}`;
+  }else{
+    const myBmi=(myWeight / ((myHeight*myHeight) / 10000)).toFixed(2)
+    result.innerHTML=`<span>${myBmi}</span>`
+  }
 
+});
 ```
