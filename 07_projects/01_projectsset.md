@@ -78,3 +78,91 @@ setInterval(function (){
 },1000)
 
 ```
+## project 4 solution
+```javascript
+const myGuessField = document.querySelector('#guessField');
+const mySubmit = document.querySelector('#subt');
+const myGueses = document.querySelector('.guesses');
+let guessArray = [];
+const remainigResult = document.querySelector('.lastResult');
+const myLowOrHigh = document.querySelector('.lowOrHi');
+const myResultParas = document.querySelector('.resultParas');
+
+let randomNum = parseInt(Math.random() * 100 + 1);
+
+let guessNum = 1;
+
+const para = document.createElement('p');
+
+let playAvialibility = true;
+if (playAvialibility) {
+  mySubmit.addEventListener('click', function (e) {
+    e.preventDefault();
+    const userInput = parseInt(myGuessField.value);
+    inputGuessValidation(userInput);
+  });
+}
+function inputGuessValidation(userInput) {
+  if (isNaN(userInput)) {
+    alert('Please enter valid number!');
+  } else if (userInput == '') {
+    alert('Please enter any number between 1 to 100');
+  } else if (userInput > 100) {
+    alert('Please enter number less than 100');
+  } else if (userInput < 1) {
+    alert('Please enter number more than 1');
+  } else {
+    guessArray.push(userInput);
+    if (guessNum > 10) {
+      displayGuess(userInput);
+      displayMessage(`Game Over, Random number was ${randomNum}`);
+      endGame();
+    } else {
+      displayGuess(userInput);
+      checkGuess(userInput);
+    }
+  }
+}
+function displayMessage(message) {
+  myLowOrHigh.innerHTML = `<h2>${message}</h2>`;
+}
+function displayGuess(userGuess) {
+  myGuessField.value = '';
+  myGueses.innerHTML += `${userGuess}, `;
+  guessNum++;
+  remainigResult.innerHTML = `${11 - guessNum}`;
+}
+function endGame() {
+  myGuessField.value = '';
+  myGuessField.setAttribute('disabled', '');
+  para.innerHTML = `<h2 id="newGame"> Start Again</h2>`;
+  myResultParas.appendChild(para);
+  playAvialibility = false;
+  newGame();
+}
+function checkGuess(userInput) {
+  if (userInput === randomNum) {
+    displayMessage('You guessed it right.');
+    endGame();
+  } else if (userInput > randomNum) {
+    displayMessage('Number is too High');
+  } else if (userInput < randomNum) {
+    displayMessage('Number is too Low');
+  }
+}
+function newGame() {
+  const newGameButton = document.querySelector('#newGame');
+  newGameButton.addEventListener('click', function (e) {
+    randomNum = parseInt(Math.random() * 100 + 1);
+    guessArray = [];
+    guessNum = 1;
+    myGueses.innerHTML = '';
+    remainigResult.innerHTML = `${11 - guessNum}`;
+    myGuessField.removeAttribute('disabled');
+    myResultParas.removeChild(para);
+
+    playAvialibility = true;
+  });
+}
+
+```
