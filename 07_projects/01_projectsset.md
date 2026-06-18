@@ -63,3 +63,18 @@ myForm.addEventListener('submit', function (e) {
 
 });
 ```
+
+## project 2 solution
+```javascript
+const myClock=document.getElementById('clock')
+// const myCloc=document.querySelector('#clock')
+// console.log(myClock , myCloc) //both return same element
+
+setInterval(function (){
+  const date=new Date()
+  //console.log(date.toLocaleTimeString())
+  //myClock.innerHTML=date.toLocaleTimeString()
+
+},1000)
+
+```
