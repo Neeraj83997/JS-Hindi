@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Youtube</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+   <ul class="language">
+    <li>Java Script</li>
+   </ul>
+</body>
+<script>
+
+    function myLang(lan){
+       const myLi=document.createElement('li')
+       console.log(myLi);
+       myLi.innerText=`${lan}` // we have to traverse whole tree
+       document.querySelector('.language').appendChild(myLi)  
+    }
+   myLang('Java')
+   myLang('Ruby')
+   myLang('Python')
+
+
+   function myOptLang(langu){
+    const optLi=document.createElement('li')
+    optLi.appendChild(document.createTextNode(langu)) // dont need to traverse whole tree
+    document.querySelector('.language').appendChild(optLi)
+   }
+   myOptLang('Struit')
+
+   //Edit
+   const secondLang=document.querySelector("li:nth-child(2)")
+   //secondLang.innerHTML="C++" // not optimized way
+   const myNewLi=document.createElement('li')
+   myNewLi.innerText='Machine'
+   secondLang.replaceWith(myNewLi)
+
+   //edit
+   const firstEl=document.querySelector('li:first-child')
+   firstEl.outerHTML='<li>Type script</li>'
+
+   //remove
+   const lastEl=document.querySelector('li:last-child')
+   lastEl.remove()
+
+   
+</script>
+</html>
