@@ -64,7 +64,7 @@ myForm.addEventListener('submit', function (e) {
 });
 ```
 
-## project 2 solution
+## project 3 solution
 ```javascript
 const myClock=document.getElementById('clock')
 // const myCloc=document.querySelector('#clock')
