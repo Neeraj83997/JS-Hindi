@@ -164,5 +164,60 @@ function newGame() {
     playAvialibility = true;
   });
 }
+```
+## project 6 solution
+```javascript
+const randomColor = function () {
+  const hex = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color = color + hex[Math.floor(Math.random() * 16)];
+  }
+  console.log(color);
+  return color;
+};
+const bgColor = function () {
+  document.body.style.backgroundColor = randomColor();
+};
+let settingIntervalId;
+const startChanging = function () {
+  if (!settingIntervalId) {
+    settingIntervalId = setInterval(bgColor, 1000);
+  }
+};
+const stopChanging = function () {
+  clearInterval(settingIntervalId);
+  settingIntervalId = null;
+};
+
+document.querySelector('#start').addEventListener('click', startChanging);
+
+document.querySelector('#stop').addEventListener('click', stopChanging);
+```
+## project 5 solution
+```javascript
+console.log('Project 5');
+
+const myInsert = document.getElementById('insert');
+
+window.addEventListener('keydown', function (e) {
+  myInsert.innerHTML = `
+  <div class='color'>
+  <table>
+  <tr>
+    <th>key</th>
+    <th>Keycode</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+  
+    <td>${e.key == ' ' ? 'Space' : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+</table>
+  </div>
+  `;
+});
 
 ```
