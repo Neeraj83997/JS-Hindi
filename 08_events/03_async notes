@@ -1,0 +1,9 @@
+=> By default Javascript is synchronous that means  after complete the executing of one code ,second code will execute. It is a single threaded language.
+
+=> Execution Context:  It will execute one line of code at a time. We can say like each operation waits for the last one to complete before executing.
+
+=> Blocking code: Block the flow of program. for ex- read file sync ->  exection waits for reading a file.
+   Non Blocking code: Does npt block the execution. for ex- read file ASync ->  During reading a file, execution does not stop
+
+
+

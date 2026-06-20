@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue; ">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <!-- <li><img width="200px" id="owl" onclick="alert('This ia an owl.')" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>  // This onclick approcah is not good becaur it can create problem when we will scale the application. -->
+           <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick=function () {
+    //     alert("owl clicked")
+    // }   // this approcan is also not good because it does not give more information,so we should use eventListener because it gives propagation's ability with onclick function feature
+    
+
+    // Notes: previously we used attachedEvent() and jquery - .on ,but now a days addEventListener is used
+
+    // document.getElementById('owl').addEventListener('click', function (e) { //eventListener can listen many events like keyboard events, mouse event, drag and drop
+    //     alert("owl clicked using Event Listener")
+    //     console.log(e)
+    // },false) // by default it false, this is an  Event Propogation , There are two types of event propogation , first is Event Bubbling and second is Event Capturing, most of time we use event bubbling i.e false. 
+             // but some another scenario we use capturing  i.e true
+
+
+    // use case of  Event Bubbling -
+    document.getElementById('images').addEventListener('click', function () {
+        console.log('clicked outside the image')  // clicked outside the image
+    }, false)
+    // document.getElementById('owl').addEventListener('click', function () {
+    //     console.log('clicked on owl') // 1) clicked on owl       2) clicked outside the image
+    // }, false)
+
+    // use case of Event Capturing-
+    // document.getElementById('images').addEventListener('click', function () {
+    //     console.log('clicked outside the image')  // clicked outside the image
+    // }, true)
+    // document.getElementById('owl').addEventListener('click', function () {
+
+    //     console.log('clicked on owl') //    1) clicked outside the image      2) clicked on owl  
+    // }, true)
+
+    //  Use case of Event Propogation 
+    document.getElementById('owl').addEventListener('click', function (e) {
+        e.stopPropagation() // event will not go upper side after becoming a bubble means stop bubbling
+        console.log('clicked on owl') //    clicked on owl  
+    }, false)
+
+    //use case of google click 
+    document.getElementById('google').addEventListener( 'click', function (e) {
+        e.stopPropagation()
+        e.preventDefault()
+        console.log("google clicked");
+        
+    },false)
+
+
+
+
+// i should read some topics like information related eventListener like:
+// a) keyboard/mouse event types, timestamp, defaultPrevented -> we can change the default behavior.
+// b) target, toElement, srcElement, currentTarget
+// c) clientX, clientY, screenX, screenY
+// d) altKey, ctrlKey, shiftKey, keyCode
+
+// Event Propogation -> 
+
+
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>My Youtube Channel</h2>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+</body>
+<script>
+    // const myInterval= function(str){
+    //     console.log( str +Date.now());  
+    //  }
+    //  const stopIntervalId=setInterval(myInterval,1000,"Hi") // we can also provide string in parameter
+    
+
+    //  const myInterval= function(){
+    //     console.log( "Neeraj "+Date.now());  
+    //  }
+    //  const stopIntervalId=setInterval(myInterval,1000)
+    //  clearInterval(stopIntervalId)
+
+
+      const myInterval= function(){
+        console.log( "Neeraj "+Date.now());  
+     }
+    let stopIntervalId;
+    document.getElementById('start').addEventListener('click',function () {
+       stopIntervalId=setInterval(myInterval,1000)
+    })
+    document.getElementById('stop').addEventListener('click',function () {
+       clearInterval(stopIntervalId)
+    })
+
+
+
+     
+
+
+    
+
+
+</script>
+</html>
