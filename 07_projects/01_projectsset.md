@@ -194,4 +194,30 @@ document.querySelector('#start').addEventListener('click', startChanging);
 
 document.querySelector('#stop').addEventListener('click', stopChanging);
 ```
+## project 5 solution
+```javascript
+console.log('Project 5');
 
+const myInsert = document.getElementById('insert');
+
+window.addEventListener('keydown', function (e) {
+  myInsert.innerHTML = `
+  <div class='color'>
+  <table>
+  <tr>
+    <th>key</th>
+    <th>Keycode</th>
+    <th>Code</th>
+  </tr>
+  <tr>
+  
+    <td>${e.key == ' ' ? 'Space' : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+  </tr>
+</table>
+  </div>
+  `;
+});
+
+```
